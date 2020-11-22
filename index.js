@@ -2,20 +2,20 @@ const express = require('express');
 const app = express();
 const estudiante = require('./routes/estudiante');
 const materia = require('./routes/materia');
-const docente = require('./routes/docente');
+const docentes = require('./routes/docentes');
 const calificaciones = require('./routes/calificaciones');
 const inquietud = require('./routes/inquietud');
 const trabajo = require('./routes/trabajo');
 
 // Ajustes
-app.set('port',3000);
+app.set('port',3001);
 
 // Middlewares
 app.use(express.json());
 
 // Routes//
 app.use('/api',estudiante);
-app.use('/api',docente);
+app.use('/api',docentes);
 app.use('/api',materia);
 app.use('/api',calificaciones);
 app.use('/api',inquietud);
