@@ -25,6 +25,6 @@ app.use('/api',inquietud);
 app.use('/api',trabajo);
 
 // Ajustes del servidor
-app.listen(app.get('port'), () => {
-  console.log(`Servidor corriendo en el puerto ${app.get('port')}`);
+app.listen(3001, () => {
+  console.log(`running server port 3001`);
 });
