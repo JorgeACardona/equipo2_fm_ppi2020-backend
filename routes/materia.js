@@ -1,0 +1,65 @@
+const express = require("express");
+const router = express.Router();
+
+const mysqlConnection = require("../db/db");
+
+router.get("/materia", (req, res) => {
+  mysqlConnection.query("SELECT * FROM materia", (err, rows, fields) => {
+    if (!err) {
+      res.json(rows);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.post('/nueva-materia',(req,res)=>{
+
+    const {cod_materia,grado,docente,nom_materia,tematica,id_docente} = req.body;
+    let materia = [{cod_materia,grado,docente,nom_materia,tematica,id_docente}];
+    
+    let nuevaMateria = `INSERT INTO materia({cod_materia,grado,docente,nom_materia,tematica,id_docente)
+                      VALUES(?,?,?,?,?,?,?)`;
+    mysqlConnection.query(nuevaMateria, materia, (err, results, fields) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      res.json({ message:`Nueva materia asignada`, })
+      });
+    });  
+
+
+
+router.put("/materia/:id", (req, res) => {
+  const { 
+    tematica,
+    id_docente } = req.body;
+  const { id } = req.params;
+  mysqlConnection.query(
+    `UPDATE modulos SET modulos.modulo = '${tematica}',modulos.mod = '${id_docente}' WHERE id = '${id}'`,
+    (err, rows, fields) => {
+      if (!err) {
+        res.json({ status: "Materia actualizada" });
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+
+// router.delete("/materia/:id", (req, res) => {
+//   const { id } = req.params;
+//   mysqlConnection.query(
+//     "DELETE FROM modulos WHERE id = ?",
+//     [id],
+//     (err, rows, fields) => {
+//       if (!err) {
+//         res.json({ status: "Materia eliminada!" });
+//       } else {
+//         console.log(err);
+//       }
+//     }
+//   );
+// });
+
+module.exports = router;
