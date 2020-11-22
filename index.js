@@ -6,12 +6,15 @@ const docentes = require('./routes/docentes');
 const calificaciones = require('./routes/calificaciones');
 const inquietud = require('./routes/inquietud');
 const trabajo = require('./routes/trabajo');
+const cors = require("cors");
 
 // Ajustes
-app.set('port',3001);
+app.set('port', process.env.PORT || 3001);
 
 // Middlewares
 app.use(express.json());
+
+app.use(cors({origin:'*'}));
 
 // Routes//
 app.use('/api',estudiante);
