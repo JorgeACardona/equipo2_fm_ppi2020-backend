@@ -8,7 +8,10 @@ const calificaciones = require('./routes/calificaciones');
 const inquietud = require('./routes/inquietud');
 const trabajo = require('./routes/trabajo');
 const cors = require('cors')
+const bodyParser = require('body-parser');
 
+
+app.use(bodyParser.urlencoded({extended: true}))
 
 
 
@@ -31,6 +34,6 @@ app.use('/api/inquietud',inquietud);
 app.use('/api/trabajo',trabajo);
 
 // Ajustes del servidor
-app.listen('port', () => {
+app.listen(app.get('port'), () => {
   console.log(`running server port ${app.get('port')}`);
 });
