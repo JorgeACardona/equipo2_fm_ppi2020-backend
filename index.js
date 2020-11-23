@@ -1,6 +1,5 @@
 const express = require('express');
-const app = express();
-const routes = require('.routes/routes');
+const app = express()
 const estudiante = require('./routes/estudiante');
 const materia = require('./routes/materia');
 const docentes = require('./routes/docentes');
@@ -24,8 +23,7 @@ app.use(cors({origin: '*'}))
 
 
 
-// Routes//
-app.usea('/api',routes)
+// Routes
 app.use('/api/estudiante',estudiante);
 app.use('/api/docentes',docentes);
 app.use('/api/materia',materia);
