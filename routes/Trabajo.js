@@ -52,4 +52,3 @@ router.put('/trabajo/:id', (req, res) => {
 // });
 
 module.exports = router;
-
