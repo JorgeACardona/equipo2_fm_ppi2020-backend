@@ -31,6 +31,6 @@ app.use('/api/inquietud',inquietud);
 app.use('/api/trabajo',trabajo);
 
 // Ajustes del servidor
-app.listen(3000, () => {
-  console.log(`running server port 3000`);
+app.listen('port', () => {
+  console.log(`running server port ${app.get('port')}`);
 });
