@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Routes//
 app.usea('/api',routes)
-app.use('/api/estidiante',estudiante);
+app.use('/api/estudiante',estudiante);
 app.use('/api/docentes',docentes);
 app.use('/api/materia',materia);
 app.use('/api/calificaciones',calificaciones);
