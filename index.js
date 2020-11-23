@@ -21,15 +21,17 @@ app.set('port',process.env.PORT || 3001);
 app.use(express.json());
 app.use(cors({origin: '*'}))
 
-
+app.get('/',(req,res)=>{
+  res.send('hi');
+});
 
 // Routes
-app.use('/api/estudiante',estudiante);
-app.use('/api/docentes',docentes);
-app.use('/api/materia',materia);
-app.use('/api/calificaciones',calificaciones);
-app.use('/api/inquietud',inquietud);
-app.use('/api/trabajo',trabajo);
+app.use('/api',estudiante);
+app.use('/api',docentes);
+app.use('/api',materia);
+app.use('/api',calificaciones);
+app.use('/api',inquietud);
+app.use('/api',trabajo);
 
 // Ajustes del servidor
 app.listen(app.get('port'), () => {
