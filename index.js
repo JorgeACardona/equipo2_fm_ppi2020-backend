@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const routes = require('.routes/routes');
 const estudiante = require('./routes/estudiante');
 const materia = require('./routes/materia');
 const docentes = require('./routes/docentes');
@@ -17,12 +18,13 @@ app.use(express.json());
 
 
 // Routes//
-app.use('/api',estudiante);
-app.use('/api',docentes);
-app.use('/api',materia);
-app.use('/api',calificaciones);
-app.use('/api',inquietud);
-app.use('/api',trabajo);
+app.usea('/api',routes)
+app.use('/api/estidiante',estudiante);
+app.use('/api/docentes',docentes);
+app.use('/api/materia',materia);
+app.use('/api/calificaciones',calificaciones);
+app.use('/api/inquietud',inquietud);
+app.use('/api/trabajo',trabajo);
 
 // Ajustes del servidor
 app.listen(3000, () => {
