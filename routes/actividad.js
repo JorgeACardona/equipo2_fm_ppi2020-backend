@@ -3,9 +3,9 @@ const router = express.Router();
 
 const mysqlConnection  = require('../db/db');
 
-router.get('/estudiantes', (req, res) => {
+router.get('/trabajo', (req, res) => {
      
-  mysqlConnection.query('SELECT * FROM estudiante ', (err, rows, fields) => {
+  mysqlConnection.query('SELECT * FROM trabajo ', (err, rows, fields) => {
       if (!err) {
         res.json(rows);
       } else {
