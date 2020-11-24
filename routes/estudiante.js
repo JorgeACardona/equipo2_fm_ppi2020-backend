@@ -16,11 +16,11 @@ router.get('/estudiantes', (req, res) => {
 
 router.post('/nuevo-estudiante',(req,res)=>{
 
-const {nombre,apellido,grado,acudiente,correo,contraseña} = req.body;
-let alumno = [nombre,apellido,grado,acudiente,correo,contraseña];
+const {nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad} = req.body;
+let alumno = [nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad];
 
 let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña)
-                  VALUES(?,?,?,?,?,?,?)`;
+                  VALUES('${nombre}', '${apellido}','${grado}', '${acudiente}','${correo}', '${contraseña}', '${cod_trabajo}, '${fecha_nacimiento}, '${id_estudiante}, '${edad})`;
 mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
   if (err) {
     return console.error(err.message);
@@ -33,7 +33,7 @@ router.put('/estudiante/:id_estudiante', (req, res) => {
   const {contraseña} = req.body;
   const { id_estudiante, nombre } = req.params;
   mysqlConnection.query(`UPDATE estudiante SET estudiante.estudiante = '${contraseña}', WHERE id_estudiante = '${id_estudiante}' nombre = '${nombre}'`, 
-  [nombre,apellido,grado,acudiente,correo,contraseña,id_estudiante], (err, rows, fields) => {
+  [contraseña,id_estudiante], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Contraseña actualizada'});
     } else {
