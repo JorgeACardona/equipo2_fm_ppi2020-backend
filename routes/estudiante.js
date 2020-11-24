@@ -19,7 +19,7 @@ router.post('/nuevo-estudiante',(req,res)=>{
 const {nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad} = req.body;
 let alumno = [nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad];
 
-let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña)
+let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad)
                   VALUES('${nombre}', '${apellido}','${grado}', '${acudiente}','${correo}', '${contraseña}', '${cod_trabajo}, '${fecha_nacimiento}, '${id_estudiante}, '${edad})`;
 mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
   if (err) {
