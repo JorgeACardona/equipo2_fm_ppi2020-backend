@@ -32,9 +32,9 @@ router.post('/nuevoEstudiante/', (req, res) => {
 
 router.put('/estudiante/:id_estudiante', (req, res) => {
   const { contraseña } = req.body;
-  const { id_estudiante, nombre } = req.params;
-  mysqlConnection.query(`UPDATE estudiante SET estudiante.estudiante = '${contraseña}', WHERE id_estudiante = '${id_estudiante}' nombre = '${nombre}'`,
-    [contraseña, id_estudiante], (err, rows, fields) => {
+  const { nombre } = req.params;
+  mysqlConnection.query(`UPDATE estudiante SET contraseña = ? WHERE nombre=?`
+    [contraseña, nombre], (err, rows, fields) => {
       if (!err) {
         res.json({ status: 'Contraseña actualizada' });
       } else {
