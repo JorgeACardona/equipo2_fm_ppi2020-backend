@@ -16,19 +16,17 @@ router.get('/estudiantes', (req, res) => {
 
 router.post('/nuevoEstudiante/', (req, res) => {
 
-  const { nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, fecha_nacimiento, id_estudiante, edad } = req.body;
-  let alumno = [nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, fecha_nacimiento, id_estudiante, edad];
+  const { nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, fecha_nacimiento, edad } = req.body;
+  let alumno = [nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, fecha_nacimiento, edad];
 
-  let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad)
-                  VALUES(?,?,?,?,?,?,?,?,?,?)`;
+  let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,edad)
+                  VALUES(?,?,?,?,?,?,?,?,?)`;
   mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
     if (err) {
       return console.error(err.message);
     }
     res.json({ message: `Alumno matriculado`, })
-    app.get('/', (req, res) => {
-      res.send('si dio');
-    });
+    
   });
 });
 
