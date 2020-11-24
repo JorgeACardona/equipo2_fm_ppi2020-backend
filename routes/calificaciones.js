@@ -29,7 +29,7 @@ mysqlConnection.query(nuevaCalificacion, calificacion, (err, results, fields) =>
   });
 });  
 
-router.put('/calificacion/:id', (req, res) => {
+router.put('/calificacion/:id_calificacion', (req, res) => {
   const {notas} = req.body;
   const {id_calificacion } = req.params;
   mysqlConnection.query(`UPDATE calificaciones SET calificaciones.calificaciones = '${notas}', WHERE id_calificacion = '${id_calificacion}' `, 

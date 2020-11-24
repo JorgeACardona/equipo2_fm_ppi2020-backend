@@ -14,33 +14,22 @@ router.get('/estudiantes', (req, res) => {
     });
   });
 
-router.post('/nuevo-estudiante',(req,res)=>{
+router.post('/nuevo-trabajo',(req,res)=>{
 
-const {nombre,apellido,grado,acudiente,correo,contraseña} = req.body;
-let alumno = [nombre,apellido,grado,acudiente,correo,contraseña];
+const {cod_trabajo,grado,fecha_entrega,tematica,docente,nota} = req.body;
+let trabajo = [cod_trabajo,grado,fecha_entrega,tematica,docente,nota];
 
-let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña)
+let nuevoTrabajo = `INSERT INTO trabajo(cod_trabajo,grado,fecha_entrega,tematica,docente,nota)
                   VALUES(?,?,?,?,?,?,?)`;
 mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
   if (err) {
     return console.error(err.message);
   }
-  res.json({ message:`Alumno matriculado`, })
+  res.json({ message:`Trabajo asignado`, })
   });
 });  
 
-router.put('/estudiante/:id_estudiante', (req, res) => {
-  const {contraseña} = req.body;
-  const { id_estudiante, nombre } = req.params;
-  mysqlConnection.query(`UPDATE estudiante SET estudiante.estudiante = '${contraseña}', WHERE id_estudiante = '${id_estudiante}' nombre = '${nombre}'`, 
-  [nombre,apellido,grado,acudiente,correo,contraseña,id_estudiante], (err, rows, fields) => {
-    if(!err) {
-      res.json({status: 'Contraseña actualizada'});
-    } else {
-      console.log(err);
-    }
-  });
-});
+
 
 // router.delete('/estudiante/:id', (req, res) => {
 //   const { id } = req.params;

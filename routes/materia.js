@@ -30,13 +30,13 @@ router.post('/nueva-materia',(req,res)=>{
 
 
 
-router.put("/materia/:id", (req, res) => {
+router.put("/materia/:cod_materia", (req, res) => {
   const { 
     tematica,
     id_docente } = req.body;
-  const { id } = req.params;
+  const { cod_materia } = req.params;
   mysqlConnection.query(
-    `UPDATE modulos SET modulos.modulo = '${tematica}',modulos.mod = '${id_docente}' WHERE id = '${id}'`,
+    `UPDATE modulos SET modulos.modulo = '${tematica}',modulos.mod = '${id_docente}' WHERE id = '${cod_materia}'`,
     (err, rows, fields) => {
       if (!err) {
         res.json({ status: "Materia actualizada" });

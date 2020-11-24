@@ -29,7 +29,7 @@ mysqlConnection.query(nuevoDocente, docente, (err, results, fields) => {
   });
 });  
 
-router.put('/docente/:id', (req, res) => {
+router.put('/docente/:id_docente', (req, res) => {
   const {contraseña} = req.body;
   const { id_docente } = req.params;
   mysqlConnection.query(`UPDATE docente SET docente.docente = '${contraseña}', WHERE id_docente = '${nombre}' `, 

@@ -5,7 +5,7 @@ const materia = require('./routes/materia');
 const docentes = require('./routes/docentes');
 const calificaciones = require('./routes/calificaciones');
 const inquietud = require('./routes/inquietud');
-
+const actividad = require('./routes/actividad')
 const cors = require('cors')
 const bodyParser = require('body-parser');
 
@@ -31,6 +31,7 @@ app.use('/api',docentes);
 app.use('/api',materia);
 app.use('/api',calificaciones);
 app.use('/api',inquietud);
+app.use('/api',actividad)
 
 
 // Ajustes del servidor
