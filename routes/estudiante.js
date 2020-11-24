@@ -16,10 +16,10 @@ router.get('/estudiantes', (req, res) => {
 
 router.post('/nuevoEstudiante/', (req, res) => {
 
-  const { nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, edad } = req.body;
-  let alumno = [nombre, apellido, grado, acudiente, correo, contraseña, cod_trabajo, edad];
+  const { nombre, apellido, grado, acudiente, correo, contraseña, edad } = req.body;
+  let alumno = [nombre, apellido, grado, acudiente, correo, contraseña, edad];
 
-  let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,edad)
+  let nuevoAlumno = `INSERT INTO estudiante(nombre,apellido,grado,acudiente,correo,contraseña,edad)
                   VALUES(?,?,?,?,?,?,?,?,)`;
   mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
     if (err) {
