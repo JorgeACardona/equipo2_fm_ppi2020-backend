@@ -14,7 +14,7 @@ router.get('/estudiantes', (req, res) => {
     });
   });
 
-router.post('/nuevo-estudiante',(req,res)=>{
+router.post('/nuevoEstudiante/',(req,res)=>{
 
 const {nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad} = req.body;
 let alumno = [nombre,apellido,grado,acudiente,correo,contraseña,cod_trabajo,fecha_nacimiento,id_estudiante,edad];
@@ -26,6 +26,9 @@ mysqlConnection.query(nuevoAlumno, alumno, (err, results, fields) => {
     return console.error(err.message);
   }
   res.json({ message:`Alumno matriculado`, })
+  app.get('/',(req,res)=>{
+    res.send('si dio');
+  });
   });
 });  
 
