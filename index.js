@@ -26,7 +26,7 @@ app.get('/',(req,res)=>{
 });
 
 // Routes
-app.use('/api',estudiante);
+app.use('/api/estudiante',estudiante);
 app.use('/api',docentes);
 app.use('/api',materia);
 app.use('/api',calificaciones);
