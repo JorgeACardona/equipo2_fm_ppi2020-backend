@@ -47,19 +47,5 @@ router.put("/materia/:cod_materia", (req, res) => {
   );
 });
 
-// router.delete("/materia/:id", (req, res) => {
-//   const { id } = req.params;
-//   mysqlConnection.query(
-//     "DELETE FROM modulos WHERE id = ?",
-//     [id],
-//     (err, rows, fields) => {
-//       if (!err) {
-//         res.json({ status: "Materia eliminada!" });
-//       } else {
-//         console.log(err);
-//       }
-//     }
-//   );
-// });
 
 module.exports = router;
