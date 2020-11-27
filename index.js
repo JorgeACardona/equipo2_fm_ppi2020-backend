@@ -19,14 +19,14 @@ app.set('port',process.env.PORT || 3001);
 
 // Middlewares
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:3000/registro'}))
+app.use(cors({origin: '*'}))
 
 app.get('/',(req,res)=>{
   res.send('hi');
 });
 
 // Routes
-app.use('/api/estudiante',estudiante);
+app.use('/api',estudiante);
 app.use('/api',docentes);
 app.use('/api',materia);
 app.use('/api',calificaciones);
