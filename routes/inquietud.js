@@ -14,13 +14,13 @@ router.get('/inquietud', (req, res) => {
     });
   });
 
-router.post('/nueva-inquietud',(req,res)=>{
+router.post('/nuevaInquietud',(req,res)=>{
 
-const {cod_inquietud,materia,docente,estudiante,grado,cod_trabajo} = req.body;
-let inquietud = [cod_inquietud,materia,docente,estudiante,grado,cod_trabajo];
+const {duda} = req.body;
+let inquietud = [duda];
 
-let nuevaInquietud = `INSERT INTO inquietud(cod_inquietud,materia,docente,estudiante,grado,cod_trabajo)
-                  VALUES(?,?,?,?,?,?,?)`;
+let nuevaInquietud = `INSERT INTO inquietud(duda)
+                  VALUES(?)`;
 mysqlConnection.query(nuevaInquietud, inquietud, (err, results, fields) => {
   if (err) {
     return console.error(err.message);
@@ -29,29 +29,6 @@ mysqlConnection.query(nuevaInquietud, inquietud, (err, results, fields) => {
   });
 });  
 
-// router.put('/inquietud/:id', (req, res) => {
-//   const {contraseña} = req.body;
-//   const { id_estudiante } = req.params;
-//   mysqlConnection.query(`UPDATE estudiante SET estudiante.estudiante = '${contraseña}', WHERE id_estudiante = '${acudiente}' id_estudiante = '${nombre}'`, 
-//   [nombre,apellido,grado,acudiente,correo,contraseña,id_estudiante], (err, rows, fields) => {
-//     if(!err) {
-//       res.json({status: 'Estudiante actualizado'});
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
 
-// router.delete('/estudiante/:id', (req, res) => {
-//   const { id } = req.params;
-//   mysqlConnection.query('DELETE FROM estudiante WHERE id = ?',
-//    [id], (err, rows, fields) => {
-//     if(!err) {
-//       res.json({status: 'Estudiante eliminado'});
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
 
 module.exports = router;
