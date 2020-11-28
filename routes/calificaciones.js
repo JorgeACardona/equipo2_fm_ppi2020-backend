@@ -15,7 +15,7 @@ router.get('/calificaciones', (req, res) => {
   });
 
   
-  router.get('/estudiantes/:id_calificacion', (req, res) => {
+  router.get('/calificaciones/:id_calificacion', (req, res) => {
     const { id_calificacion } = req.params;
  mysqlConnection.query('SELECT * FROM calificaciones WHERE id_calificacion = ?',[id_calificacion], (err, rows, fields) => {
      if (!err) {
